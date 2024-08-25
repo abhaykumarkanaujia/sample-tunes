@@ -31,7 +31,7 @@ export default function AudioPlayer({
   }, [loadTrack]);
 
   return (
-    <div className="bg-primary-accent1 pt-4 pb-2 fixed bottom-0 left-0 right-0 rounded-t-3xl sm:rounded-t-none flex flex-col items-center border-t border-t-primary-accent3">
+    <section className="bg-primary-accent1 pt-4 pb-2 fixed bottom-0 left-0 right-0 rounded-t-3xl sm:rounded-t-none flex flex-col items-center">
       <div className="flex justify-center items-center w-full gap-3">
         <Button
           className="rounded-full p-2 text-2xl flex items-center justify-center hover:text-gray-200 text-white transition-all hover:bg-transparent font-bold"
@@ -88,6 +88,6 @@ export default function AudioPlayer({
           {secondsToHms(playerState.trackDuration || 0)}
         </p>
       </div>
-    </div>
+    </section>
   );
 }

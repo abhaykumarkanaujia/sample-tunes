@@ -22,7 +22,7 @@ const config = {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
-        background: "#0a0a0a",
+        background: "#111",
         foreground: "hsl(var(--foreground))",
         primary: {
           DEFAULT: "hsl(var(--primary))",
@@ -33,7 +33,7 @@ const config = {
           accent4: "#666",
           accent3: "#444",
           accent2: "#333",
-          accent1: "#111",
+          accent1: "#0a0a0a",
           violetbackground: "#291d3a",
           violetbackgroundsecondary: "#211830",
           foreground: "hsl(var(--primary-foreground))",
