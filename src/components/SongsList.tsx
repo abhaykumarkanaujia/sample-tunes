@@ -1,5 +1,6 @@
+import { getAuthToken } from "@/lib/services/auth-token";
 import { cn } from "@/lib/utils";
-
-export default function SongsList({ className }: { className?: string }) {
+export default async function SongsList({ className }: { className?: string }) {
+  await getAuthToken();
   return <section className={cn("", className)}></section>;
 }

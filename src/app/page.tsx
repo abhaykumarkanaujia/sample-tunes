@@ -1,17 +1,12 @@
-"use client";
 import SongsList from "@/components/SongsList";
-import { Button } from "@/components/ui/button";
-import { useSongsStates } from "@/contexts/SongsContext";
-
-export default function Home() {
-  const { setCurrentTrack } = useSongsStates();
-  const setSongMp3AsTrack = () => {
-    setCurrentTrack("https://open.spotify.com/track/5ztLCIjBElyDk5qXfGRNNP");
-  };
+import { cookies } from "next/headers";
+export default async function Home() {
+  const cookieStore = cookies();
+  console.log(cookieStore.get("access_token"));
   return (
-    <main>
+    <main className="flex justify-center items-center min-h-[60vh] bg-gray-600">
+      <p className="text-wrap">{cookieStore.get("access_token")?.value}</p>
       <SongsList />
-      <Button onClick={setSongMp3AsTrack}>Set Track</Button>
     </main>
   );
 }
