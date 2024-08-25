@@ -1,8 +1,15 @@
 export const isSupportedAudioSource = (src: string) => {
   const supportedFormats = ["mp3", "wav", "ogg"];
   const fileExtension = src.split(".").pop()?.toLowerCase();
-  return fileExtension && supportedFormats.includes(fileExtension);
+
+  const isSpotifyPreview = src.startsWith("https://p.scdn.co/");
+
+  return (
+    isSpotifyPreview ||
+    (fileExtension && supportedFormats.includes(fileExtension))
+  );
 };
+
 
 export const secondsToHms = (seconds: number) => {
   const hours = Math.floor(seconds / 3600)

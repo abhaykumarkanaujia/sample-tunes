@@ -22,8 +22,10 @@ export default function RootLayout({
       <body className={inter.className}>
         <SongsStatesPorvider>
           <Header />
-          {children}
-          <SongPlayer />
+          <main className="mb-[5rem]">{children}</main>
+          <div>
+            <SongPlayer />
+          </div>
         </SongsStatesPorvider>
       </body>
     </html>

@@ -7,7 +7,7 @@ const Header = () => {
   useEffect(() => {
     refreshAuthToken();
   }, []);
-  return <header className="min-h-16 bg-primary-accent1"></header>;
+  return <header className="min-h-16 bg-primary-accent1 sticky top-0"></header>;
 };
 
 export default Header;

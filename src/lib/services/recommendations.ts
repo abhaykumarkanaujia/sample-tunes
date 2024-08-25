@@ -1,11 +1,12 @@
-import { cookies } from "next/headers";
 import { GET_RECOMMENDATIONS } from "../config/endpoints/endpoints";
 import { logger } from "../logger";
 import { refreshAuthToken } from "./auth-token";
 
-const getRecommendations = async (genres?: string[]) => {
-  const access_token = cookies().get("access_token");
-  const token_type = cookies().get("token_type");
+const getRecommendations = async (
+  token_type: string,
+  access_token: string,
+  genres?: string[]
+) => {
   const headers = new Headers();
   headers.append("Content-Type", "application/json");
   headers.append("Authorization", `${token_type} ${access_token}`);
@@ -13,7 +14,7 @@ const getRecommendations = async (genres?: string[]) => {
   const params = new URLSearchParams({
     limit: "10",
     market: "IN",
-    genres: genres?.join(",") || "classical,country",
+    seed_genres: genres?.join(",") || "classic,country",
   });
   try {
     const response = await fetch(

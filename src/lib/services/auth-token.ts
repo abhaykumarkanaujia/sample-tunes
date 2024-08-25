@@ -29,12 +29,9 @@ const getAuthToken = async () => {
 };
 
 const refreshAuthToken = async () => {
-  const headers = new Headers();
-  headers.append("Content-Type", "application/x-www-form-urlencoded");
   try {
     const response = await fetch(`${REFRESH_AUTH_TOKEN}`, {
       method: "POST",
-      headers: headers,
     });
     if (!response.ok) {
       throw new Error(`Response status: ${response.status}`);
