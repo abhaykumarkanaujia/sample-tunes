@@ -3,11 +3,11 @@ import type { Config } from "tailwindcss"
 const config = {
   darkMode: ["class"],
   content: [
-    './pages/**/*.{ts,tsx}',
-    './components/**/*.{ts,tsx}',
-    './app/**/*.{ts,tsx}',
-    './src/**/*.{ts,tsx}',
-	],
+    "./pages/**/*.{ts,tsx}",
+    "./components/**/*.{ts,tsx}",
+    "./app/**/*.{ts,tsx}",
+    "./src/**/*.{ts,tsx}",
+  ],
   prefix: "",
   theme: {
     container: {
@@ -22,10 +22,20 @@ const config = {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
-        background: "hsl(var(--background))",
+        background: "#0a0a0a",
         foreground: "hsl(var(--foreground))",
         primary: {
           DEFAULT: "hsl(var(--primary))",
+          accent8: "#fafafa",
+          accent7: "#eaeaea",
+          accent6: "#999",
+          accent5: "#888",
+          accent4: "#666",
+          accent3: "#444",
+          accent2: "#333",
+          accent1: "#111",
+          violetbackground: "#291d3a",
+          violetbackgroundsecondary: "#211830",
           foreground: "hsl(var(--primary-foreground))",
         },
         secondary: {
@@ -75,6 +85,6 @@ const config = {
     },
   },
   plugins: [require("tailwindcss-animate")],
-} satisfies Config
+} satisfies Config;
 
 export default config

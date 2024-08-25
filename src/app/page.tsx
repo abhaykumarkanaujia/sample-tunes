@@ -1,11 +1,11 @@
 "use client";
 import { Button } from "@/components/ui/button";
-import { SongsStates } from "@/contexts/SongsContext";
+import { useSongsStates } from "@/contexts/SongsContext";
 
 export default function Home() {
-  const { setCurrentTrack } = SongsStates;
+  const { setCurrentTrack } = useSongsStates();
   const setSongMp3AsTrack = () => {
-    setCurrentTrack("songs.mp3");
+    setCurrentTrack("song.mp3");
   };
   return (
     <main>

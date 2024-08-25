@@ -1,8 +1,8 @@
 "use client";
-import { SongsStates } from "@/contexts/SongsContext";
+import { useSongsStates } from "@/contexts/SongsContext";
 import AudioPlayer from "./AudioPlayer";
 
 export default function SongPlayer() {
-  const { currentTrack } = SongsStates;
+  const { currentTrack } = useSongsStates();
   return <AudioPlayer audioSource={currentTrack} />;
 }

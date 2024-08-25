@@ -5,15 +5,8 @@ import { useCallback, useEffect, useState } from "react";
 import { Slider } from "../ui/slider";
 import { secondsToHms } from "@/lib/helpers";
 import { Button } from "../ui/button";
-import {
-  IoPlayCircle,
-  IoPauseCircle,
-  IoPlayBack,
-  IoPlayForward,
-  IoReload,
-  IoSearch,
-} from "react-icons/io5";
 import Link from "next/link";
+import { Icons } from "../Icons";
 
 export default function AudioPlayer({
   audioSource,
@@ -38,8 +31,52 @@ export default function AudioPlayer({
   }, [loadTrack]);
 
   return (
-    <div className="bg-transparent py-3 fixed bottom-0 left-0 right-0 rounded-t-3xl flex flex-col">
-      <div className="flex flex-col gap-1 px-6">
+    <div className="bg-primary-accent1 pt-4 pb-2 fixed bottom-0 left-0 right-0 rounded-t-3xl sm:rounded-t-none flex flex-col items-center border-t border-t-primary-accent3">
+      <div className="flex justify-center items-center w-full gap-3">
+        <Button
+          className="rounded-full p-2 text-2xl flex items-center justify-center hover:text-gray-200 text-white transition-all hover:bg-transparent font-bold"
+          variant={"ghost"}
+          disabled={!audioSource}
+          onClick={replay}
+        >
+          <Icons.reload />
+        </Button>
+        <Button
+          className="rounded-full p-2 text-3xl flex items-center justify-center hover:text-gray-200 text-white disabled:text-gray-500 transition-all hover:bg-transparent"
+          variant={"ghost"}
+          disabled={true}
+        >
+          <Icons.playBack />
+        </Button>
+        <Button
+          className="rounded-full p-2 text-5xl flex items-center justify-center hover:text-gray-200 text-white transition-all hover:bg-transparent"
+          variant={"ghost"}
+          onClick={togglePlay}
+        >
+          {playerState.playbackState === PlaybackState.PLAYING ? (
+            <Icons.pause />
+          ) : (
+            <Icons.play />
+          )}
+        </Button>
+        <Button
+          className="rounded-full p-2 text-3xl flex items-center justify-center hover:text-gray-200 text-white disabled:text-gray-500 transition-all hover:bg-transparent"
+          variant={"ghost"}
+          disabled={true}
+        >
+          <Icons.playForward />
+        </Button>
+        <Link
+          className="rounded-full p-2 text-2xl flex items-center justify-center hover:text-gray-200 text-white transition-all hover:bg-transparent font-bold"
+          href={"/"}
+        >
+          <Icons.search />
+        </Link>
+      </div>
+      <div className="flex gap-2 sm:gap-3 lg:gap-4 px-2 md:px-16 lg:px-32 my-2 lg:max-w-[80vw] xl:max-w-[70vw] w-full">
+        <p className="text-xs text-gray-300">
+          {secondsToHms(playerState.playbackPosition || 0)}
+        </p>
         <Slider
           value={[playerState.playbackPosition || 0]}
           onValueChange={setTrack}
@@ -47,55 +84,9 @@ export default function AudioPlayer({
           step={1}
           className="hover:cursor-pointer transition-all"
         />
-        <div className="flex justify-between">
-          <p className="text-sm">
-            {secondsToHms(playerState.playbackPosition || 0)}
-          </p>
-          <p className="text-sm">
-            {secondsToHms(playerState.trackDuration || 0)}
-          </p>
-        </div>
-      </div>
-      <div className="flex justify-center items-center w-full gap-3">
-        <Button
-          className="rounded-full p-2 text-2xl flex items-center justify-center hover:text-gray-700 disabled:text-gray-500 transition-all hover:bg-transparent font-bold"
-          variant={"ghost"}
-          disabled={!audioSource}
-          onClick={replay}
-        >
-          <IoReload />
-        </Button>
-        <Button
-          className="rounded-full p-2 text-3xl flex items-center justify-center hover:text-gray-700 disabled:text-gray-500 transition-all hover:bg-transparent"
-          variant={"ghost"}
-          disabled={true}
-        >
-          <IoPlayBack />
-        </Button>
-        <Button
-          className="rounded-full p-2 text-5xl flex items-center justify-center hover:text-gray-700 transition-all hover:bg-transparent"
-          variant={"ghost"}
-          onClick={togglePlay}
-        >
-          {playerState.playbackState === PlaybackState.PLAYING ? (
-            <IoPauseCircle />
-          ) : (
-            <IoPlayCircle />
-          )}
-        </Button>
-        <Button
-          className="rounded-full p-2 text-3xl flex items-center justify-center hover:text-gray-700 disabled:text-gray-500 transition-all hover:bg-transparent"
-          variant={"ghost"}
-          disabled={true}
-        >
-          <IoPlayForward />
-        </Button>
-        <Link
-          className="rounded-full p-2 text-2xl flex items-center justify-center hover:text-gray-700 transition-all hover:bg-transparent font-bold"
-          href={"/"}
-        >
-          <IoSearch />
-        </Link>
+        <p className="text-xs text-gray-300">
+          {secondsToHms(playerState.trackDuration || 0)}
+        </p>
       </div>
     </div>
   );

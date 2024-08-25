@@ -1,9 +1,11 @@
 "use client";
-import { createContext, useContext, useState } from "react";
+import { createContext, FC, useContext, useState } from "react";
 
 const SongsContext = createContext<any>(null);
 
-const SongsStatesPorvider = ({ children }: { children: React.ReactNode }) => {
+const SongsStatesPorvider: FC<{ children: React.ReactNode }> = ({
+  children,
+}) => {
   const [currentTrack, setCurrentTrack] = useState<string | null>();
   return (
     <SongsContext.Provider value={{ currentTrack, setCurrentTrack }}>
@@ -12,6 +14,9 @@ const SongsStatesPorvider = ({ children }: { children: React.ReactNode }) => {
   );
 };
 
-const SongsStates = useContext(SongsContext);
+const useSongsStates = () => {
+  const states = useContext(SongsContext);
+  return states;
+};
 
-export { SongsStatesPorvider, SongsContext, SongsStates };
+export { SongsStatesPorvider, SongsContext, useSongsStates };

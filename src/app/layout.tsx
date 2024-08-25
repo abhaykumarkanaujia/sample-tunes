@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import SongPlayer from "@/components/SongPlayer";
 import { SongsStatesPorvider } from "@/contexts/SongsContext";
+import Header from "@/components/Header";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,6 +21,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <SongsStatesPorvider>
+          <Header />
           {children}
           <SongPlayer />
         </SongsStatesPorvider>
