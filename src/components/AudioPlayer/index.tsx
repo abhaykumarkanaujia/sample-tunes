@@ -7,6 +7,8 @@ import { secondsToHms } from "@/lib/helpers";
 import { Button } from "../ui/button";
 import Link from "next/link";
 import { Icons } from "../Icons";
+import { ROUTES } from "@/lib/constant";
+import { usePathname } from "next/navigation";
 
 export default function AudioPlayer({
   audioSource,
@@ -14,6 +16,7 @@ export default function AudioPlayer({
   audioSource?: string | null;
 }) {
   const [audioTrack, setAudioTrack] = useState<string>("");
+  const pathname = usePathname();
 
   const { playerState, togglePlay, setTrackPosition, replay } =
     useAudioPlayer(audioTrack);
@@ -68,9 +71,13 @@ export default function AudioPlayer({
         </Button>
         <Link
           className="rounded-full p-2 text-2xl flex items-center justify-center hover:text-gray-200 text-white transition-all hover:bg-transparent font-bold"
-          href={"/"}
+          href={
+            pathname === ROUTES.SEARCH_ROUTE
+              ? ROUTES.HOME_ROUTE
+              : ROUTES.SEARCH_ROUTE
+          }
         >
-          <Icons.search />
+          {pathname === ROUTES.HOME_ROUTE ? <Icons.search /> : <Icons.home />}
         </Link>
       </div>
       <div className="flex gap-2 sm:gap-3 lg:gap-4 px-2 md:px-16 lg:px-32 my-2 lg:max-w-[80vw] xl:max-w-[70vw] w-full">

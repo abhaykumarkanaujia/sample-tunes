@@ -3,6 +3,9 @@ import { useSongsStates } from "@/contexts/SongsContext";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 
+// min-h-[8rem] max-h-[8rem] min-w-[8rem] max-w-[8rem] md:max-h-[16rem] md:max-w-[16rem] md:min-h-[16rem] md:min-w-[16rem]
+
+// max-h-[6rem] max-w-[6rem] min-h-[6rem] min-w-[6rem] md:max-h-[12rem] md:max-w-[12rem] md:min-h-[12rem] md:min-w-[12rem]
 export default function SongCard({
   audioSource,
   imageSource,
@@ -21,7 +24,7 @@ export default function SongCard({
     <div
       onClick={handleClick}
       className={cn(
-        "text-white max-h-[16rem] max-w-[16rem] min-h-[16rem] min-w-[16rem] p-8 mx-2 my-2 bg-primary-accent2  hover:cursor-pointer hover:bg-primary-accent4",
+        "text-white p-2 mx-2 my-2 bg-primary-accent2  hover:cursor-pointer hover:bg-primary-accent4 rounded-sm",
         currentTrack === audioSource && "bg-primary-accent4"
       )}
     >
@@ -31,13 +34,11 @@ export default function SongCard({
           alt={name}
           width={200}
           height={200}
-          className="max-h-[12rem] max-w-[12rem] min-h-[12rem] min-w-[12rem] rounded-lg"
+          className=" rounded-lg"
         />
       </div>
       <div className="flex flex-col items-center py-1 mx-3">
-        <p className="max-w-[90%] w-full truncate text-sm text-center">
-          {name}
-        </p>
+        <p className="w-full text-xs md:text-sm text-center truncate">{name}</p>
       </div>
     </div>
   );

@@ -4,6 +4,8 @@ import "./globals.css";
 import SongPlayer from "@/components/SongPlayer";
 import { SongsStatesPorvider } from "@/contexts/SongsContext";
 import Header from "@/components/Header";
+import { cn } from "@/lib/utils";
+import { SearchProvider } from "@/contexts/SearchContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,14 +21,18 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <SongsStatesPorvider>
-          <Header />
-          <main className="mb-[5rem]">{children}</main>
-          <div>
-            <SongPlayer />
-          </div>
-        </SongsStatesPorvider>
+      <body className={cn(inter.className, "h-screen flex flex-col")}>
+        <SearchProvider>
+          <SongsStatesPorvider>
+            <Header />
+            <main className="mb-[5rem] flex-1 overflow-y-auto px-4 md:px-10 py-3">
+              {children}
+            </main>
+            <div className="fixed bottom-0 left-0 right-0">
+              <SongPlayer />
+            </div>
+          </SongsStatesPorvider>
+        </SearchProvider>
       </body>
     </html>
   );

@@ -1,4 +1,5 @@
 import { GET_RECOMMENDATIONS } from "../config/endpoints/endpoints";
+import { ARTISTS, GENRES, TRACKS } from "../config/songs";
 import { logger } from "../logger";
 import { refreshAuthToken } from "./auth-token";
 
@@ -12,9 +13,11 @@ const getRecommendations = async (
   headers.append("Authorization", `${token_type} ${access_token}`);
 
   const params = new URLSearchParams({
-    limit: "10",
+    limit: "40",
     market: "IN",
-    seed_genres: genres?.join(",") || "classic,country",
+    seed_genres: genres?.join(",") || GENRES.join(","),
+    seed_tracks: TRACKS.join(","),
+    seed_artists: ARTISTS.join(","),
   });
   try {
     const response = await fetch(

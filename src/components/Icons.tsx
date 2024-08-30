@@ -5,6 +5,7 @@ import {
   IoPlayForward,
   IoReload,
   IoSearch,
+  IoHome,
 } from "react-icons/io5";
 
 export const Icons = {
@@ -14,4 +15,5 @@ export const Icons = {
   playForward: IoPlayForward,
   reload: IoReload,
   search: IoSearch,
+  home: IoHome,
 };
