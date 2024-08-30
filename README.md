@@ -16,7 +16,9 @@ after installing all the dependencies copy .env.example to .env
 
 now go to [Spotify API](https://developer.spotify.com/dashboard) and create an app there.
 
-copy your SPOTIFY_CLIENT_ID and SPOTIFY_CLIENT_SECRET and paste it into .env file
+replace your SPOTIFY_CLIENT_ID and SPOTIFY_CLIENT_SECRET and in .env file
+
+values into .env.example is only for refrence they don't work.
 
 at last run you development server.
 
