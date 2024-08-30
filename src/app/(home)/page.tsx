@@ -1,6 +1,10 @@
+import { cookies } from "next/headers";
 import Recommendations from "./_sections/Recommendations";
-import { ACCESS_TOKEN, TOKEN_TYPE } from "@/lib/config/cookies";
+import { Cookies } from "@/lib/types/enum";
 export default async function Home() {
+  const cookiesStore = cookies();
+  const ACCESS_TOKEN = cookiesStore.get(Cookies.TOKEN)?.value;
+  const TOKEN_TYPE = cookiesStore.get(Cookies.TOKEN_TYPE)?.value;
   return (
     <>
       {TOKEN_TYPE && ACCESS_TOKEN ? (
